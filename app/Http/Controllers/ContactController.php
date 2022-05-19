@@ -109,17 +109,15 @@ class ContactController extends Controller
             $shareContact->contact_ids = json_encode($request->contact_ids);
             $shareContact->message = $request->message;
             $shareContact->save();
-//            return $shareContact;
 
+            $delay = now()->addMinutes(1);
+            $user->notify((new ContactShareNoti($request->message,route('shared-contact.show',$shareContact->id))))->delay($delay);
 
-            $user->notify(new ContactShareNoti($request->message,route('shared-contact.show',$shareContact->id)));
+//            return $request;
+//            $userId = $user->id;
+//            Contact::whereIn("id",$request->contact_ids)
+//                ->update(["user_id" => $userId]);
 
-            return $request;
-
-
-            $userId = $user->id;
-            Contact::whereIn("id",$request->contact_ids)
-                ->update(["user_id" => $userId]);
         }elseif($request->functionality == 2){
             Contact::destroy(join(',',$request->contact_ids));
         }else{

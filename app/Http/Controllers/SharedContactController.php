@@ -50,7 +50,7 @@ class SharedContactController extends Controller
      * @param  \App\Models\SharedContact  $sharedContact
      * @return \Illuminate\Http\Response
      */
-    public function show(Request $request,SharedContact $sharedContact)
+    public function show(SharedContact $sharedContact)
     {
         if($sharedContact->status){
             return abort(404);
