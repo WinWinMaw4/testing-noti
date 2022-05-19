@@ -54,7 +54,7 @@
                         @else
 
                             <li class="nav-item">
-                                <a href="{{route('contact.index')}}" class="nav-link">Contact</a>
+                                <a href="{{route('contact.index')}}" class="nav-link">{{__('contact')}}</a>
 
                             </li>
 
@@ -68,12 +68,11 @@
                                     @endif
                                 </a>
 
-                                <div class="dropdown-menu dropdown-menu-end noti-menu" aria-labelledby="navbarDropdown">
-                                    <ul class="list-group list">
+                                <div class="dropdown-menu dropdown-menu-end noti-menu py-0" aria-labelledby="navbarDropdown">
+                                    <ul class="list-group">
                                         @forelse(auth()->user()->Notifications as $notification)
-                                        <li class="list-group-item border-0">
+                                        <li class="list-group-item border-0 border-bottom">
                                             <a href="{{$notification->data['url']}}"  class="{{ $notification->read_at !=  null ? 'text-black-50' : 'text-black' }} text-decoration-none d-flex justify-content-start align-items-center">
-{{--                                                <input type="text" name="notificationId" value="{{$notification->id}}">--}}
                                                 @if($notification->read_at == null)
                                                     <div class="bg-primary rounded-circle p-1 me-3" style="width: 10px;height: 10px;"></div>
                                                 @else
@@ -86,9 +85,9 @@
                                                     </strong>
                                                     {{strtolower($notification->data['title'])}}
                                                 </div>
-                                                <div class="">
-                                                    {{ $notification->created_at  }}
-                                                </div>
+                                                <span class="text-nowrap small">
+                                                    {{$notification->created_at->shortRelativeDiffForHumans()}}
+                                                </span>
 
                                             </a>
                                         </li>
@@ -98,6 +97,35 @@
                                             </li>
                                         @endforelse
                                     </ul>
+                                </div>
+                            </li>
+
+
+
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle position-relative noti-dropdown" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-globe fa-fw fa-2x"></i>
+                                </a>
+
+                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                   <ul class="list-group list">
+                                       <li class="list-group-item border-0">
+                                           <a href="{{route('lang.change','en')}}">English</a>
+                                       </li>
+                                       <li class="list-group-item border-0">
+                                           <a href="{{route('lang.change','mm')}}">Myanmar</a>
+                                       </li>
+                                       <li class="list-group-item border-0">
+                                           <a href="{{route('lang.change','jpn')}}">Japanese</a>
+                                       </li>
+                                       <li class="list-group-item border-0">
+                                           <a href="{{route('lang.change','fr')}}">French</a>
+                                       </li>
+                                       <li class="list-group-item border-0">
+                                           <a href="{{route('lang.change','sp')}}">Spanish</a>
+                                       </li>
+                                   </ul>
+
                                 </div>
                             </li>
 
@@ -132,6 +160,10 @@
         </main>
     </div>
 
+
+
+
 @stack("js")
+
 </body>
 </html>

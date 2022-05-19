@@ -45,14 +45,14 @@
 
                 <div class="d-flex justify-content-between align-items-start mt-3">
                     <div class="">
-                        <div class="d-flex">
+                        <div class="d-flex justify-content-center align-items-center">
                             <select class="form-select me-2" form="bulk_action" name="functionality" required>
-                                <option value="">Select Action</option>
-                                <option value="1">Share Contact</option>
-                                <option value="2">Delete Contact</option>
+                                <option value="">{{__('select action')}}</option>
+                                <option value="1">{{__('share contact')}}</option>
+                                <option value="2">{{__('delete contact')}}</option>
                             </select>
                             <div class="">
-                                <button class="btn btn-outline-primary" form="bulk_action" >Submit</button>
+                                <button class="btn btn-outline-primary form-control text-nowrap" form="bulk_action" >{{__('submit')}}</button>
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="emailModalLabel">Contact Share</h5>
+                <h5 class="modal-title" id="emailModalLabel">{{__('contact share')}}</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -85,9 +85,9 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" onclick="cancelAction()"  class="btn btn-secondary">Close</button>
+                <button type="button" onclick="cancelAction()"  class="btn btn-secondary">{{__('close')}}</button>
                 <button type="submit" form="bulk_action" class="btn btn-primary">
-                    <i class="fa-solid fa-paper-plane"></i> Share
+                    <i class="fa-solid fa-paper-plane"></i> {{__('share')}}
                 </button>
             </div>
         </div>

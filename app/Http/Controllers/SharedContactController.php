@@ -60,10 +60,14 @@ class SharedContactController extends Controller
         $from = User::find($sharedContact->from);
         $to = User::find($sharedContact->to);
         $contacts = Contact::whereIn("id",json_decode($sharedContact->contact_ids))->get();
+
+//        Auth::user()->unreadNotifications->where('id', $request->get('id'))->markAsRead();
+//                Auth::user()->unreadNotifications()->update(['read_at' => now()]);
+
+
 //
 //        $mark = Auth::user()->unreadNotifications->where('id',$notificationId)->get();
 //        return $mark;
-        Auth::user()->unreadNotifications()->update(['read_at' => now()]);
 
         return view('shared-contact.show',compact('from','to','sharedContact','contacts'));
 
@@ -93,10 +97,12 @@ class SharedContactController extends Controller
 
           Contact::whereIn("id",json_decode($sharedContact->contact_ids))
                 ->update(["user_id" =>Auth::id()]);
-        }
+//            Auth::user()->unreadNotifications()->update(['read_at' => now()]);
 
+        }
         $sharedContact->status = $request->action;
         $sharedContact->update();
+
 
         return redirect()->route('contact.index');
 

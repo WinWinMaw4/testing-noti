@@ -11292,6 +11292,10 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+a {
+  text-decoration: none;
+}
+
 .noti-dropdown.dropdown-toggle::after {
   border: none;
 }

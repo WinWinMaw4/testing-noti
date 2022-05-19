@@ -34,7 +34,7 @@
                                 @method('put')
                                 <input type="hidden" name="action" value="cancel">
                                 <button class="btn btn-danger">
-                                    Cancel
+                                    {{__('cancel')}}
                                 </button>
                             </form>
                         </div>
@@ -45,7 +45,7 @@
                                 @method('put')
                                 <input type="hidden" name="action" value="reject">
                                 <button class="btn btn-outline-danger">
-                                    Reject
+                                    {{__('reject')}}
                                 </button>
                             </form>
                             <form class="d-inline" action="{{route('shared-contact.update',$sharedContact->id)}}" method="post">
@@ -53,7 +53,7 @@
                                 @method('put')
                                 <input type="hidden" name="action" value="accept">
                                 <button class="btn btn-primary">
-                                    Accept
+                                    {{__('accept')}}
                                 </button>
                             </form>
                         </div>

@@ -1,6 +1,5 @@
 <?php
-
 return [
-    "name " => 'WinWinMaw',
+    'name'=>'AWin'
 ]
 ?>

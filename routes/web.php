@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\SharedContactController;
-
+use App\Http\Controllers\LanguageController;
 Route::get('/', function () {
     return view('welcome');
 });
@@ -30,5 +30,6 @@ Route::middleware("auth")->group(function (){
     Route::resource("/shared-contact",SharedContactController::class);
     Route::post("/contact-bulk-action",[ContactController::class,'bulkAction'])->name("contact.bulkAction");
     Route::post("/contact-bulk-share",[ContactController::class,'bulkShare'])->name("contact.bulkShare");
+    Route::get('/lang/{locale}', [LanguageController::class,'lang_change'])->name('lang.change');
 });
 
