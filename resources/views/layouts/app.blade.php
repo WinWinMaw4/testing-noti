@@ -86,6 +86,9 @@
                                                     </strong>
                                                     {{strtolower($notification->data['title'])}}
                                                 </div>
+                                                <div class="">
+                                                    {{ $notification->created_at  }}
+                                                </div>
 
                                             </a>
                                         </li>
